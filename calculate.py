@@ -1,11 +1,13 @@
 import json
 import os 
 import os.path
+from datetime import date
 
 user_name = input('enter a user name: ')
 
 
 def calculate(course, quiz, lab, assignment, presentation, participation, midterm, final):
+    today = date.today()
     check_list = []
     with open("./courses.json" , 'r') as f:
         file_data = json.load(f)
@@ -47,7 +49,8 @@ def calculate(course, quiz, lab, assignment, presentation, participation, midter
                             "participation": 0,
                             "midterm": 0,
                             "final": 0,
-                            "total": 0
+                            "total": 0,
+                            "date": ""
                         }
         with open("./users/{0}.json".format(user_name), 'w') as f:
             json.dump(create_json, f, indent=4)
@@ -62,6 +65,7 @@ def calculate(course, quiz, lab, assignment, presentation, participation, midter
             file_data['midterm'] = midterm_mark
             file_data['final'] = final_mark
             file_data['total'] = total_mark
+            file_data['date'] = today.strftime("%m/%d/%y")
             f.seek(0)
             json.dump(file_data, f, indent =4)
             f.truncate()
@@ -77,9 +81,10 @@ def calculate(course, quiz, lab, assignment, presentation, participation, midter
             file_data['midterm'] = midterm_mark
             file_data['final'] = final_mark
             file_data['total'] = total_mark
+            file_data['date'] = today.strftime("%m/%d/%y")
             f.seek(0)
             json.dump(file_data, f, indent =4)
             f.truncate()
     return
 
-calculate('ACIT 1420',50,20,30,50,10,20,10)
+calculate('ACIT 1420',100,20,30,50,10,20,10)
