@@ -7,6 +7,7 @@ user_name = input('enter a user name: ')
 
 
 def calculate(course, quiz, lab, assignment, presentation, participation, midterm, final):
+    '''calculates all marks for the given course based on input'''
     today = date.today()
     check_list = []
     with open("./courses.json" , 'r') as f:
@@ -111,6 +112,7 @@ def calculate(course, quiz, lab, assignment, presentation, participation, midter
     return
 
 def get_marks():
+    '''gets calculated result for the user, returns list of stored course for user'''
     with open("./users/{0}.json".format(user_name), 'r+') as f:
         file_data = json.load(f)
         mark_list = []
@@ -120,6 +122,7 @@ def get_marks():
     return mark_list
 
 def calculate_GPA():
+    '''calculates the GPA for the courses currently stored under users name, returns GPA value'''
     marks = get_marks()
     grade_list = []
     index_count = 0
@@ -130,5 +133,20 @@ def calculate_GPA():
     print('GPA:', round(GPA,2))
     return GPA
 
+def find_course(course):
+    '''returns mark breakdown for searched course'''
+    with open("./courses.json" , 'r') as f:
+        course_list =[]
+        file_data =  json.load(f)
+        for i in file_data:
+            course_list.append(i['course_name'])
+            if i['course_name'] == course:
+                print(i)
+                return i
+        if course not in course_list:
+            print('course not found')
+            return
+
 calculate('ACIT 2420',50,20,30,50,10,30,10)
 calculate_GPA()
+find_course('ACIT 2420')
