@@ -107,9 +107,28 @@ def calculate(course, quiz, lab, assignment, presentation, participation, midter
                         i['date'] = today.strftime("%m/%d/%y")
                         f.seek(0)
                         json.dump(file_data, f, indent =4)
-                        f.truncate()
-
-                        
+                        f.truncate()               
     return
 
-calculate('ACIT 1515',50,20,30,50,10,30,10)
+def get_marks():
+    with open("./users/{0}.json".format(user_name), 'r+') as f:
+        file_data = json.load(f)
+        mark_list = []
+        for i in file_data:
+            mark_list.append({i['course_name']:i['total']})
+        print('saved course grades:', mark_list)
+    return mark_list
+
+def calculate_GPA():
+    marks = get_marks()
+    grade_list = []
+    index_count = 0
+    for i in marks:
+        grade_list.append(sum(i.values()))
+        index_count+=1
+    GPA = sum(grade_list)/index_count
+    print('GPA:', round(GPA,2))
+    return GPA
+
+calculate('ACIT 2420',50,20,30,50,10,30,10)
+calculate_GPA()
