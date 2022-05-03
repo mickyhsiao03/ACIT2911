@@ -7,7 +7,6 @@ user_name = input('enter a user name: ')
 
 
 def calculate(course, quiz, lab, assignment, presentation, participation, midterm, final):
-    today = date.today()
     check_list = []
     with open("./courses.json" , 'r') as f:
         file_data = json.load(f)
@@ -37,8 +36,12 @@ def calculate(course, quiz, lab, assignment, presentation, participation, midter
                         'final mark:', final_mark,
                         'total mark:', total_mark
                     )
+                    details = write_data(user_name, course, quiz_mark, lab_mark, assignment_mark, presentation_mark, participation_mark, midterm_mark, final_mark, total_mark)
+                    return details
+ 
             
-
+def write_data(user_name, course, quiz_mark, lab_mark, assignment_mark, presentation_mark, participation_mark, midterm_mark, final_mark, total_mark):
+    today = date.today()
     if not os.path.exists("./users/{0}.json".format(user_name)):
         create_json = {
                             "course_name": "",
@@ -85,6 +88,6 @@ def calculate(course, quiz, lab, assignment, presentation, participation, midter
             f.seek(0)
             json.dump(file_data, f, indent =4)
             f.truncate()
-    return
+    return total_mark
 
-calculate('ACIT 1420',100,20,30,50,10,20,10)
+calculate('ACIT 1515',1000,20,30,50,10,20,10)
