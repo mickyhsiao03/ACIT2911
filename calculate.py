@@ -3,12 +3,9 @@ import os
 import os.path
 from datetime import date
 
-user_name = input('enter a user name: ')
-
-
-def calculate(course, quiz, lab, assignment, presentation, participation, midterm, final):
+def calculate(user, course, quiz, lab, assignment, presentation, participation, midterm, final):
     '''calculates all marks for the given course based on input'''
-    today = date.today()
+
     check_list = []
     with open("./courses.json" , 'r') as f:
         file_data = json.load(f)
@@ -29,17 +26,13 @@ def calculate(course, quiz, lab, assignment, presentation, participation, midter
                     final_mark = final * (i['final']/100)
                     total_mark = quiz_mark + lab_mark + assignment_mark + presentation_mark + participation_mark + midterm_mark +final_mark
 
-                    print('quiz mark:',quiz_mark,
-                        'lab mark:', lab_mark,
-                        'assignment mark:', assignment_mark,
-                        'presentation mark:', presentation_mark,
-                        'participation mark:', participation_mark,
-                        'midterm mark:', midterm_mark,
-                        'final mark:', final_mark,
-                        'total mark:', total_mark
-                    )
-            
+                    details = write_data(user, course, quiz_mark, lab_mark, assignment_mark, presentation_mark, participation_mark, midterm_mark, final_mark, total_mark )
+    return details
 
+
+def write_data(user_name, course, quiz_mark, lab_mark, assignment_mark, presentation_mark, participation_mark, midterm_mark, final_mark, total_mark):  
+    '''write calculated result into json file, creates new file if does not exist'''          
+    today = date.today()
     if not os.path.exists("./users/{0}.json".format(user_name)):
         create_json = [{
                             "course_name": "",
@@ -66,7 +59,7 @@ def calculate(course, quiz, lab, assignment, presentation, participation, midter
                 i['participation'] = participation_mark
                 i['midterm'] = midterm_mark
                 i['final'] = final_mark
-                i['total'] = total_mark
+                i['total'] = round(total_mark,2)
                 i['date'] = today.strftime("%m/%d/%y")
                 f.seek(0)
                 json.dump(file_data, f, indent =4)
@@ -87,7 +80,7 @@ def calculate(course, quiz, lab, assignment, presentation, participation, midter
                             "participation": participation_mark,
                             "midterm": midterm_mark,
                             "final": final_mark,
-                            "total": total_mark,
+                            "total": round(total_mark,2),
                             "date": today.strftime("%m/%d/%y")
                 }
                 file_data.append(to_add)
@@ -104,14 +97,14 @@ def calculate(course, quiz, lab, assignment, presentation, participation, midter
                         i['participation'] = participation_mark
                         i['midterm'] = midterm_mark
                         i['final'] = final_mark
-                        i['total'] = total_mark
+                        i['total'] = round(total_mark,2)
                         i['date'] = today.strftime("%m/%d/%y")
                         f.seek(0)
                         json.dump(file_data, f, indent =4)
                         f.truncate()               
-    return
+    return total_mark
 
-def get_marks():
+def get_marks(user_name):
     '''gets calculated result for the user, returns list of stored course for user'''
     with open("./users/{0}.json".format(user_name), 'r+') as f:
         file_data = json.load(f)
@@ -121,9 +114,9 @@ def get_marks():
         print('saved course grades:', mark_list)
     return mark_list
 
-def calculate_GPA():
+def calculate_GPA(user_name):
     '''calculates the GPA for the courses currently stored under users name, returns GPA value'''
-    marks = get_marks()
+    marks = get_marks(user_name)
     grade_list = []
     index_count = 0
     for i in marks:
@@ -146,7 +139,3 @@ def find_course(course):
         if course not in course_list:
             print('course not found')
             return
-
-calculate('ACIT 2420',50,20,30,50,10,30,10)
-calculate_GPA()
-find_course('ACIT 2420')

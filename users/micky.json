@@ -1,27 +1,27 @@
 [
     {
         "course_name": "ACIT 1515",
-        "quiz": 10.0,
-        "lab": 4.0,
+        "quiz": 0.2,
+        "lab": 0.2,
         "assignments_projects": 0.0,
         "presentations": 0.0,
-        "participation": 1.0,
-        "midterm": 7.5,
-        "final": 2.5,
-        "total": 25.0,
-        "date": "04/27/22"
+        "participation": 0.1,
+        "midterm": 0.25,
+        "final": 0.25,
+        "total": 1.0,
+        "date": "05/03/22"
     },
     {
         "course_name": "ACIT 1420",
-        "quiz": 7.5,
-        "lab": 4.0,
+        "quiz": 1500.0,
+        "lab": 0.2,
         "assignments_projects": 0.0,
-        "presentations": 5.0,
-        "participation": 1.5,
-        "midterm": 3.0,
-        "final": 2.5,
-        "total": 23.5,
-        "date": "04/27/22"
+        "presentations": 0.1,
+        "participation": 0.15,
+        "midterm": 0.15,
+        "final": 0.25,
+        "total": 1500.85,
+        "date": "05/03/22"
     },
     {
         "course_name": "ACIT 1620",
@@ -45,6 +45,18 @@
         "midterm": 7.5,
         "final": 2.5,
         "total": 25.0,
-        "date": "04/28/22"
+        "date": "04/30/22"
+    },
+    {
+        "course_name": "ACIT 2911",
+        "quiz": 0.44999999999999996,
+        "lab": 0.0,
+        "assignments_projects": 0.44999999999999996,
+        "presentations": 0.0,
+        "participation": 0.0,
+        "midterm": 0.8999999999999999,
+        "final": 1777.6000000000001,
+        "total": 1779.4,
+        "date": "05/01/22"
     }
 ]

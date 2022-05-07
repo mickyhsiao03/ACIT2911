@@ -1,0 +1,26 @@
+[
+    {
+        "course_name": "ACIT 1420",
+        "quiz": 0.44999999999999996,
+        "lab": 0.6000000000000001,
+        "assignments_projects": 0.0,
+        "presentations": 0.30000000000000004,
+        "participation": 0.44999999999999996,
+        "midterm": 0.44999999999999996,
+        "final": 0.75,
+        "total": 3.0,
+        "date": "04/30/22"
+    },
+    {
+        "course_name": "ACIT 2911",
+        "quiz": 0.6,
+        "lab": 0.0,
+        "assignments_projects": 0.6,
+        "presentations": 0.0,
+        "participation": 0.0,
+        "midterm": 1.2,
+        "final": 1.6,
+        "total": 4.0,
+        "date": "04/30/22"
+    }
+]

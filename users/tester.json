@@ -1,0 +1,14 @@
+[
+    {
+        "course_name": "ACIT 1420",
+        "quiz": 1500.0,
+        "lab": 0.4,
+        "assignments_projects": 0.0,
+        "presentations": 0.2,
+        "participation": 0.3,
+        "midterm": 0.3,
+        "final": 0.5,
+        "total": 1501.7,
+        "date": "04/30/22"
+    }
+]

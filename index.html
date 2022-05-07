@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="index.js"></script>
+    <title>GPA calculator</title>
+
+</head>
+<body>
+    <h1>Search For Course Mark Breakdown</h1>
+    <form id="searchForm">
+        <label for="course">Course:</label>
+        <input type="text" name="course" required><br><br>
+
+        <input type="button" value="Search" onclick="searchCourse()">
+    </form>
+    <div>
+        <h3 id="dist"></h3>
+        <div id="dcourse"></div>
+        <div id="dquiz"></div>
+        <div id="dlab"></div>
+        <div id="dassignments"></div>
+        <div id="dpresentations"></div>
+        <div id="dparticipation"></div>
+        <div id="dmidterm"></div>
+        <div id="dfinal"></div>
+    </div>  
+
+    <h1>Calculate Grades</h1>
+    <form id="gradeForm">
+        <label for="user">User Name:</label>
+        <input type="text" name="user" required/><br><br>
+
+        <label for="course">Course:</label>
+        <input type="text" name="course" required><br><br>
+
+        <label for="quiz">Quiz:</label>
+        <input type="number" name="quiz" required><br><br>
+
+        <label for="lab">Lab:</label>
+        <input type="number" name="lab" required><br><br>
+
+        <label for="assignments">Assignments and Projects:</label>
+        <input type="number" name="assignments" required><br><br>
+
+        <label for="presentation">Presentations:</label>
+        <input type="number" name="presentation" required><br><br>
+
+        <label for="participation">Participation:</label>
+        <input type="number" name="participation" required><br><br>
+
+        <label for="midterm">Midterm:</label>
+        <input type="number" name="midterm" required><br><br>
+
+        <label for="final">Final:</label>
+        <input type="number" name="final" required><br><br>
+
+        <input type="button" value="Calculate" onclick="calculateGrades()">
+    </form>        
+
+    <div>
+        <div id="current"></div>
+    </div>
+
+    <div>
+        <h3 id="calc"></h3>
+        <div id="cquiz"></div>
+        <div id="clab"></div>
+        <div id="cassignments"></div>
+        <div id="cpresentations"></div>
+        <div id="cparticipation"></div>
+        <div id="cmidterm"></div>
+        <div id="cfinal"></div>
+    </div>
+
+    <h1>Check Your History</h1>
+    <form id="histForm">
+        <label for="histUser">User:</label>
+        <input type="text" name="histUser" required><br><br>
+
+
+        <input type="button" value="Retrieve" onclick="getHist()">
+    </form>
+
+    <div id="history-container"></div>
+
+    <h1>Get List of Courses</h1>
+    <div id="result-container"></div>
+    <button onclick="getCourses()">get courses</button>
+
+
+
+
+
+
+
+
+</body>
+
+<script>
+    
+
+</script>
+
+</html>
+

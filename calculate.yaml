@@ -1,0 +1,69 @@
+---
+openapi: 3.0.0
+info:
+  title: GPA calculator API
+  description: API for GPA calculator
+  contact:
+    email: mhsiao6@my.bcit.ca
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+- url: /
+tags:
+- name: students
+  description: Operations available to any student
+paths:
+  /calculate:
+    post:
+      operationId: calculate.calculate
+      requestBody:
+        description: calculations
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/calculating'
+      responses:
+        '200':
+          description: service is running.
+  
+components:
+  schemas:
+    calculating: 
+      required: 
+      - course_name
+      - quiz
+      - lab
+      - assignments_projects
+      - presentations
+      - participation
+      - midterm
+      - final
+      properties: 
+        course_name: 
+          type: string
+          example: ACIT 1420
+        quiz: 
+          type: integer 
+          example: 50
+        lab: 
+          type: integer 
+          example: 20
+        assignments_projects: 
+          type: integer 
+          example: 30
+        presentations: 
+          type: integer 
+          example: 50
+        participation: 
+          type: integer 
+          example: 10
+        midterm: 
+          type: integer 
+          example: 30
+        final: 
+          type: integer 
+          example: 10
+        
+        
